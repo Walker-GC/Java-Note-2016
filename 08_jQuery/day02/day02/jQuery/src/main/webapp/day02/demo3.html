@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	//类似于
+	//window.onload = function(){}
+	//window.onload如果在页面上执行多次，
+	//则后者覆盖前者，即只有最后一次有效。
+	//$(function(){})如果在页面上执行多次，
+	//则它内部的代码会叠加，即都有效。
+	$(function(){
+		//给按钮1绑定单击事件
+		$(":button:first").click(function(e){
+			console.log("按钮1");
+			//因为事件对象由浏览器创建，
+			//而不同浏览器创建的event不同，
+			//导致开发时需要判断浏览器。
+			//为了避免这个麻烦，jQuery
+			//对event做了封装，将其API统一了。
+			//获取事件源: e.target
+			//取消事件冒泡：e.stopPropagation()
+			console.log(e);
+		});
+		//给图片绑定hover事件。
+		//css里有hover伪类选择器，
+		//js里没有hover，jQuery中有hover事件。
+		//hover事件相当于onmouseover+onmouseout
+		$("img").hover(
+			function(){
+				//特定的API，实际上是修改内联样式
+				$(this).width("250px").height("250px");
+				//$(this).css("width","250px");
+				//$(this).addClass("big");
+				//$(this).toggleClass("big");
+			},//悬停时
+			function(){
+				$(this).width("218px").height("218px");
+				//$(this).css("width","218px");
+				//$(this).removeClass("big");
+				//$(this).toggleClass("big");
+			} //离开时
+		);
+		//给按钮2绑定单击事件
+		$(":button:eq(1)").click(function(){
+			//让图片在显示和隐藏间切换
+			$("img").toggle();
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<input type="button" value="按钮1"/>
+	</p>
+	<p>
+		<input type="button" value="按钮2"/>
+	</p>
+	<p>
+		<img src="../images/01.jpg"/>
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

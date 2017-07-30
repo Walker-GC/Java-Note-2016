@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 1.表单元素：
+		只有在此元素内的数据才能提交。
+		action：声明表单要提交给谁。
+		method/enctype：将来再讲。 -->
+	<form action="http://www.tmooc.cn">
+		<!-- 2.表单控件：用来让用户输入数据。 -->
+		<!-- 2.1 input元素：
+			一共有9个，通过type属性来区分它们 -->
+		<!-- 1)文本框
+			value：设置默认值
+			maxlength：限制最大长度
+			readonly：设置只读 -->
+		<p>
+			账号:<input type="text" readonly
+				value="admin" maxlength="10"/>
+		</p>
+		<!-- 2)密码框：属性同上 -->
+		<p>
+			密码:<input type="password"/>
+		</p>
+		<!-- 3)单选框
+			name：组名，同一组radio彼此互斥
+			checked：设置默认选中
+			value：将来再讲 -->
+		<p>
+			性别:
+			<input type="radio" name="sex" checked/>男
+			<input type="radio" name="sex"/>女
+		</p>
+		<!-- 4)多选框
+			checked：设置默认选中
+			name/value：将来再讲 -->
+		<p>
+			兴趣:
+			<input type="checkbox" checked/>琴
+			<input type="checkbox" checked/>棋
+			<input type="checkbox"/>书
+			<input type="checkbox"/>画
+		</p>
+		<!-- 5)文件框 -->
+		<p>
+			头像:<input type="file"/>
+		</p>
+		<!-- 6)隐藏框：
+			用来传递一些不需要被用户看到的数据。
+			数据的值通过value进行默认设置。 -->
+		<p>
+			<input type="hidden" value="你看不见我"/>
+		</p>
+		<!-- 7)按钮：
+			submit：将表单中的数据提交给服务器
+			reset：重置表单
+			button：默认没有功能，需要通过js自定义
+			按钮的名字都用value来设置 -->
+		<p>
+			<input type="submit" value="注册"/>
+			<input type="reset" value="重置"/>
+			<input type="button" value="试试"/>
+		</p>
+		
+		<!-- 2.2 其他元素：
+			一共3个，标签名都不同。 -->
+		<!-- 1)label：
+			用来管理表单中的文字，可以将文字
+			和框绑定到一起，从而增加框的面积。
+			绑定的步骤：
+				a.增加id属性，给框命名
+				b.for="id值"实现绑定 -->
+		<p>
+			<input type="checkbox" id="c1"/>
+			<label for="c1">我已阅读并自愿遵守此协议！</label>
+		</p>
+		<!-- 2)下拉选
+			value：将来再讲
+			selected：设置默认选中 -->
+		<p>
+			家乡:
+			<select>
+				<option>请选择</option>
+				<option>北京</option>
+				<option>上海</option>
+				<option>广州</option>
+				<option selected>深圳</option>
+				<option>东莞</option>
+				<option>南昌</option>
+				<option>桂林</option>
+			</select>
+		</p>
+		<!-- 3)文本域 -->
+		<p>
+			简介:
+			<textarea cols="20" rows="5">我的老家就住在这个屯</textarea>
+		</p>
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+

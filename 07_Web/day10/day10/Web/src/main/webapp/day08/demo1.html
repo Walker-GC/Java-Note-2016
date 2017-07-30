@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//毫秒数
+	var ms = 0;
+	//记次的次数
+	var n = 0;
+	
+	//启动秒表
+	var id;
+	function start() {
+		if(id) {
+			return;
+		}
+		id = setInterval(function(){
+			//毫秒累加
+			ms += 10;
+			//换算出分、秒、毫秒
+			var minute = parseInt(ms/1000/60);
+			var second = parseInt(ms/1000%60);
+			var milli = parseInt(ms%1000/10);
+			//分别写入对应的span
+			var span1 = document.getElementById("minute");
+			var span2 = document.getElementById("second");
+			var span3 = document.getElementById("milli");
+			span1.innerHTML = prepend(minute);
+			span2.innerHTML = prepend(second);
+			span3.innerHTML = prepend(milli);
+		},10);
+	}
+	//填0占位
+	function prepend(m) {
+		return m.toString().length==1?"0"+m:m;
+	}
+	//暂停秒表
+	function stop() {
+		if(id) {
+			clearInterval(id);
+			id = null;
+		}
+	}
+	//复位秒表
+	function reset() {
+		if(id) {
+			return;
+		}
+		var span1 = document.getElementById("minute");
+		var span2 = document.getElementById("second");
+		var span3 = document.getElementById("milli");
+		span1.innerHTML = "00";
+		span2.innerHTML = "00";
+		span3.innerHTML = "00";
+		ms = 0;
+		n = 0;
+	}
+	//记录次数
+	function record() {
+		if(id) {
+			//次数累加
+			n++;
+			//获取span中分、秒、毫秒
+			var span1 = document.getElementById("minute");
+			var span2 = document.getElementById("second");
+			var span3 = document.getElementById("milli");
+			//将上述信息记录到p内
+			var p = document.getElementById("record");
+			p.innerHTML += 
+				"记次:" + n + " " +
+				span1.innerHTML + ":" +
+				span2.innerHTML + "." +
+				span3.innerHTML + "<br>";
+		}
+	}
+</script>
+</head>
+<body>
+	<p>
+		<input type="button" value="启动"
+			onclick="start();"/>
+		<input type="button" value="暂停"
+			onclick="stop();"/>
+		<input type="button" value="复位"
+			onclick="reset();"/>
+		<input type="button" value="记次"
+			onclick="record();"/>
+	</p>
+	<p>
+		<span id="minute">00</span>:<span id="second">00</span>.<span id="milli">00</span>
+	</p>
+	<p id="record"></p>
+</body>
+</html>
+
+
+
+
+
+
+

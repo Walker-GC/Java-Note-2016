@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.big {font-size:30px;}
+	.important {color:red;}
+</style>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	window.onload = function() {
+		//1.读写内容
+		//1.1 html() == innerHTML
+		console.log($("p:first").html());
+		$("p:first").html("jQuery支持<u>DOM操作</u>");
+		//1.2 text() == innerText
+		//不支持子标签，语法同1.1
+		//1.3 val() == value
+		console.log($(":button:first").val());
+		$(":button:first").val("BBB");
+		//1.4 attr() == setAttribute()+getAttribute()
+		console.log($("img:first").attr("src"));
+		$("img:first").attr("src","../images/02.jpg");
+		
+		//2.增删节点
+		//2.1创建节点
+		var $li1 = $("<li>天津</li>");
+		var $li2 = $("<li>南京</li>");
+		console.log($li1);
+		//2.2增加节点
+		$("ul").append($li1);
+		$("#gz").before($li2);
+		//2.3删除节点
+		//$("#gz").remove();
+		
+		//3.获取某节点的亲戚(父亲、孩子、兄弟)
+		//有时候我们不是自己写选择器选择节点，
+		//而是调用了别人的方法获得了某个节点，
+		//然后我对这个节点做了某些操作，又希望
+		//继续对它的亲戚做进一步操作，此时没办法
+		//直接写选择器，就需要调用这些方法了。
+		var $gz = $("#gz");
+		console.log($gz.parent());
+		console.log($gz.prev());
+		console.log($gz.siblings());
+		var $ul = $("ul");
+		console.log($ul.find("li:contains('京')"));
+		
+		//4.样式操作
+		//4.1访问元素的style属性
+		//css()参考昨天写的字体变大的案例
+		//4.2访问元素的class属性(*)
+		//1)addClass("")
+		//给指定元素的class属性内加一个值
+		$("p:first").addClass("big").addClass("important");
+		//2)removeClass("")
+		//从指定元素的class属性内删除一个值
+		$("p:first").removeClass("big").removeClass("important");
+		//3)removeClass()
+		//删除指定元素的class属性内的所有值
+		//4)hasClass("")
+		//判断指定元素的class属性内是否包含某值
+		console.log($("p:first").hasClass("big"));
+		
+	}
+	
+	function bigger() {
+		//5)toggleClass("")
+		//判断指定的元素的class属性上，
+		//是否有某值。若有则删除它，
+		//若没有就加上它。
+		$("p:first").toggleClass("big");
+	}
+	
+</script>
+</head>
+<body>
+	<p>jQuery支持<b>DOM操作</b></p>
+	<p><input type="button" value="AAA"/></p>
+	<p><img src="../images/01.jpg"/></p>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+	</ul>
+	<p>
+		<input type="button" value="大大大"
+			onclick="bigger();"/>
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

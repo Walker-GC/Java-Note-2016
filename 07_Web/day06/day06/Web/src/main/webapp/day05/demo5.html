@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//若此处写了函数，则浏览器打开网页，
+	//执行到此处时仅仅是创建了这个函数，
+	//当用户点击某按钮时才调用这个函数。
+	//若此处不写函数，直接写要执行的js，
+	//则浏览器打开网页时就立刻执行此js。
+	console.log("js控制台打印");
+	
+	//1.声明变量
+	//js中的变量不区分类型
+	//变量的默认值是undefined
+	var x;
+	console.log(x);
+	x = 6;
+	console.log(x);
+	var y = 8;
+	console.log(y);
+	
+	//2.隐式转换
+	var s = "hello";
+	var n = 3.14;
+	var b = true;
+	console.log(s+n);
+	console.log(s+b);
+	console.log(n+b);
+	console.log(b+b);
+	
+	//3.强制转换函数
+	console.log(n.toString()+n);
+	console.log(parseInt("3.14")+1);
+	console.log(parseFloat("3.14")+1);
+	console.log(parseInt("abc"));
+	console.log(typeof("5.6"));
+	console.log(isNaN("5.6"));
+	console.log(isNaN("abc"));
+	console.log(isNaN(""));
+	
+	//4.运算符
+	var m = "3";
+	var n = 3;
+	console.log(m==n);
+	console.log(m===n);
+	
+	//5.条件表达式
+	//js中的条件表达式可以是任意类型的值，
+	//当以非布尔值做条件的时候，空值等价
+	//于false，非空的值等价于true。
+	//空值：0/null/""/NaN/undefined
+	//目的：简化js的编程代码
+	//假设：判断某变量，当它非空时输出OK
+	var k = 0;
+	if(k) {
+		console.log("ok");
+	}
+	var w = 6;
+	w && console.log("hi");
+	
+</script>
+</head>
+<body>
+	<p>js是解释型语言，按顺序执行。</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

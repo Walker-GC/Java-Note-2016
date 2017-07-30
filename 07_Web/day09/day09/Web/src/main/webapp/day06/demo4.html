@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function cal() {
+		//获取文本框中的算式
+		var ss = 
+			document.getElementById("num").value;
+		//获取span
+		var span = 
+			document.getElementById("result");
+		//执行此算式
+		try {
+			var value = eval(ss);
+			//将结果写入span
+			span.innerHTML = value;
+		} catch(e) {
+			//给予错误提示
+			span.innerHTML = "Error";
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="num"/>
+	<input type="button" value="="
+		onclick="cal();"/>
+	<span id="result"></span>
+</body>
+</html>
+
+
+
+
+
+
+

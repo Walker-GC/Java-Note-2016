@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		//1.根据标签名查询节点
+		//1.1在整个文档(网页)内查询
+		var lis = 
+			document.getElementsByTagName("li");
+		console.log(lis);
+		//1.2在某个节点下查询
+		var ul = document.getElementById("city");
+		lis = ul.getElementsByTagName("li");
+		console.log(lis);
+		//2.根据层次查询节点
+		//查询某节点的亲戚(父亲、孩子、兄弟)
+		//2.1查询父亲
+		var gz = document.getElementById("gz");
+		console.log(gz.parentNode);
+		//2.2查询孩子
+		//2.2.1查询所有的孩子(带空格，了解)
+		console.log(ul.childNodes);
+		//2.2.2查询类型为元素的孩子(常用)
+		lis = ul.getElementsByTagName("li");
+		console.log(lis);
+		//2.3查询兄弟
+		//节点.父亲.孩子们[i]
+		var li = 
+			gz.parentNode.getElementsByTagName("li")[1];
+		console.log(li);
+		//3.根据name查询节点
+		var radios = 
+			document.getElementsByName("sex");
+		console.log(radios);
+	}
+</script>
+</head>
+<body>
+	<ol>
+		<li>河北省</li>
+		<li>山东省</li>
+		<li>江苏省</li>
+	</ol>
+	<ul id="city">
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>天津</li>
+	</ul>
+	<p>
+		<input type="radio" name="sex"/>男
+		<input type="radio" name="sex"/>女
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

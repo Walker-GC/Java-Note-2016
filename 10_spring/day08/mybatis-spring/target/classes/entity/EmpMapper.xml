@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="dao.EmpDAO">
+	<!-- 
+	id属性：sql的名称，要求唯一。
+	parameterType属性：参数类型，要求写
+	类的完整的名称。
+	 -->
+	<insert id="save" 
+		parameterType="entity.Emp">
+		INSERT INTO emp 
+		VALUES(emp_seq.nextval,#{ename},#{age}) 
+	</insert>
+	
+	<!-- 
+		resultType属性：返回类型，要求写类
+		的完整的名称。
+	 -->
+	<select id="findAll" 
+		resultType="entity.Emp">
+		SELECT * FROM emp
+	</select>
+	
+	<!-- 
+		可以将java.lang.Integer
+		简写为int。
+	 -->
+	<select id="findById" 
+	parameterType="int" 
+	resultType="entity.Emp">
+		SELECT * FROM emp 
+		WHERE id = #{id1}
+	</select>
+	
+	<update id="modify" 
+		parameterType="entity.Emp">
+		UPDATE emp SET ename = #{ename},
+		age = #{age} WHERE id = #{id} 
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM emp WHERE id = #{id1}
+	</delete>
+	
+	<!-- 返回Map类型的查询结果 
+		map是java.util.Map的简写形式
+	-->
+	<select id="findById2" 
+		parameterType="int" 
+		resultType="map">
+		SELECT * FROM emp WHERE id = #{id1}
+	</select>
+	
+	<select id="findById3" 
+		resultMap="emp2Map"
+		parameterType="int">
+		SELECT * FROM emp WHERE id = #{id}
+	</select>
+	<!-- 配置resultMap元素：
+	作用：描述实体类的属性名与表的字段名
+	的对应关系 -->
+	<resultMap type="entity.Emp2" 
+		id="emp2Map">
+		<result property="empNo" column="id"/>
+		<result property="name" column="ename"/>
+	</resultMap>
+	
+	
+	
+	
+	
+	
+</mapper>

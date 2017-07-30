@@ -1,0 +1,116 @@
+﻿刘雪松
+liuxs@tedu.cn
+
+#SSH整合
+是什么？Struts2+spring +hibernate
+云笔记 SSM springMVC SPRING MYBATIS
+
+第一天：Struts2简介/消息传递/Session
+
+第二天：Struts2+spring/Result类型/拦截器
+
+第三天：值栈/SPRING+MYBATIS整合/hibernate简介
+
+第四天：hibernateID的生成规则/hibernate对象的生成周
+期HQL查询语言
+
+第五天：Struts2+spring +hibernate整合
+
+#Struts2简介：
+是什么？一个基于MVC设计模式的web
+
+应用框架，作为控制器在模型和视图之间进行数据交互。
+
+-webwork是Struts2的前身
+
+-Struts1和Struts2是同一组织下两款不同产品
+
+-springMVC/Struts1/Struts2都采用了mvc设计模式
+
+##Struts2配置步骤
+
+1、创建项目
+
+2、导包 
+	
+3、配置主控制器filter（web.xml）
+
+4、添加配置Struts.xml
+
+案例：HelloWorld步骤：
+
+1-创建项目
+
+2-导包 struts2-core：2.3.8
+
+3-配置主控制器
+
+4-配置Struts.xml
+
+5-实现HelloAction.java
+
+6-实现OK.jsp
+##Struts2消息传递
+##由控制器向页面传递消息 （bean属性方法）
+1、在控制器中增加属性，并且添加get方法
+
+2、在execute方法中，给属性赋值
+
+3、JSP页面，使用EL表达式
+
+##由页面向控制器传递值
+1、基本属性传递方式
+   -在控制器声明与html元素name相一致bean属性
+
+   -增加get/set方法
+
+   -Struts2在接收请求的同时，会把页面值注入到bean属性中
+
+案例：登录
+
+
+##域模型传递方式
+优点：
+
+-可以便捷的处理表单项
+
+-特别是表单被重用的时候，特别方便
+
+##登录逻辑补充（session使用）
+
+1、获取表单信息
+
+2、调用业务层，进行数据校验
+
+3、登录成功：
+	-保存用户信息到session
+	-进行页面转发
+   登录失败：返回登录页面
+
+###session回顾：
+什么是session？会话对象
+###session实现原理
+###面试题：
+描述一下session和cookie的区别。
+
+1、cookie 是把用户数据写到浏览器
+
+2、session 把用户数据写到独占的session当中
+
+3、session对象是由服务器创建的，request对象的
+getSession方法获取对象
+###Session注入
+Map<String,Object> session;
+
+setSession()
+
+implements sessionAware
+
+#作业：
+1、搭建Struts2环境，实现helloworld
+
+2、利用基本属性传递方式，实现登录
+
+3、利用域模型方式，实现登录
+
+

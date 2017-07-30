@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body {
+		/*哪张图片*/
+		background-image: 
+			url(../images/background.png);
+		/*如何平铺*/
+		background-repeat: repeat-y;
+		/*设置位置*/
+		background-position: center;
+	}
+	
+	div {
+		border: 1px solid red;
+		width: 125px;
+		height: 125px;
+		margin: 10px auto;
+	}
+	
+	/*可以采用简化的方式设置背景:
+	 background:背景色  背景图  平铺  位置;
+	 上述4个值可以酌情省略，但至少要保留
+	 背景色或背景图中的任意一个。 */
+	.enemy {
+		background: 
+			url(../images/airplane.png)
+			no-repeat center;
+	}
+	.hero {
+		background: 
+			url(../images/hero0.png)
+			no-repeat center;
+	}
+	/*元素内若有滚动条，则滚动时它的背景图
+		会默认一起滚动，可以修改为固定。 */
+	body {
+		background-attachment: fixed;
+	}
+</style>
+</head>
+<body>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="enemy"></div>
+	<div class="hero"></div>
+	<div class="hero"></div>
+</body>
+</html>
+
+
+
+
+
+
+

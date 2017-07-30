@@ -1,0 +1,107 @@
+/*该css可以被所有模块的列表页面所复用*/
+/*0.统一设置一些样式*/
+/*统一设置页面上的字体*/
+body {
+	font-family: 
+		"微软雅黑","文泉驿正黑","黑体";
+}
+/*统一去掉所有元素的默认边距，
+	星是通用选择器，可以选中一切元素。 */
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/*1.对页面进行布局设置：
+	包括边框、宽高、边距。 */
+div {
+	border: 1px solid #F00;
+	margin: 0 auto;
+}
+.logo {
+	width: 960px;
+	height: 61px;
+}
+.nav {
+	height: 91px;
+}
+.core {
+	height: 410px;
+	/*顶部预留出放渐变条的空间*/
+	padding-top: 10px;
+}
+.copy {
+	width: 960px;
+	height: 50px;
+}
+.content {
+	width: 950px;
+	height: 390px;
+	border: 5px solid #8ac1db;
+}
+.content div {
+	width: 910px;
+	height: 40px;
+}
+/*选择器有优先级，id>class>元素，而派生选择器
+ 的优先级是它所包含的选择器的优先级的和。 */
+.content .data {
+	height: 310px;
+}
+
+/*2.设置背景色和背景图*/
+body {
+	background-color: #0EA8D8;
+}
+.logo {
+	background-image: 
+		url(../img/top_bg.png);
+}
+.nav {
+	background-color: #0488BB;
+}
+.core {
+	background: 
+		url(../img/content_bg.png)
+		repeat-x top;
+}
+.content {
+	background-color: #e8f3f8;
+}
+
+/*3.设置字体样式*/
+.logo {
+	text-align: right;
+	line-height: 61px;
+}
+.logo a {
+	margin-right: 40px;
+	color: #FFF;
+	font-size: 14px;
+	text-decoration: none;
+}
+.logo a:hover {
+	font-weight: bold;
+}
+.copy p {
+	font-size: 14px;
+	color: #FFF;
+	text-align: center;
+	/*border: 1px solid yellow;*/
+	height: 25px;
+	line-height: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

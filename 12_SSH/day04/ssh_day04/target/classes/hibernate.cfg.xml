@@ -1,0 +1,26 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- 定义连接的数据库类型 -->
+		<property name="dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<!-- 配置数据库连接/数据库驱动/用户名/密码 -->
+		<property name="connection.url">
+			jdbc:mysql://localhost:3306/test
+		</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<property name="connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+		<!-- 配置映射描述文件 -->
+		<mapping resource="User.hbm.xml"/>
+		<mapping resource="Student.hbm.xml"/>
+		<mapping resource="Teacher.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

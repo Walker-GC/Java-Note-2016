@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>day01</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>一、WEB应用的发展</h1>
+<h2>1.规律</h2>
+<ul>
+<li>由单机程序向网络程序发展</li>
+<li>由CS程序向BS程序发展</li>
+</ul>
+<h2>2.CS和BS的区别</h2>
+<h3>CS</h3>
+<ul>
+<li>Client Server</li>
+<li>客户端服务器程序，客户端由程序员开发，用户要安装</li>
+</ul>
+<h3>BS</h3>
+<ul>
+<li>Browser Server</li>
+<li>浏览器服务器程序，不需要单独开发及安装</li>
+</ul>
+<h1>二、Servlet介绍</h1>
+<h2>1.服务器如何给浏览器返回网页？</h2>
+<h3>1)返回静态网页</h3>
+<ul>
+<li>百度百科、新闻</li>
+<li>内容不变，任何人看都一样</li>
+<li>服务器保存一个HTML，访问时直接返回它</li>
+</ul>
+<h3>2)返回动态网页</h3>
+<ul>
+<li>微博、淘宝</li>
+<li>每个人看的内容有差别</li>
+<li>服务器保存一个组件，用它来拼一个动态网页</li>
+<li>在Java项目中，这个组件就是Servlet</li>
+</ul>
+<blockquote>
+<p>组件：就是满足规范的对象</p>
+</blockquote>
+<h2>2.Servlet具备的特征</h2>
+<ul>
+<li>Servlet是存储在服务器上的</li>
+<li>Servlet满足sun的规范</li>
+<li>它可以拼动态资源(网页、图片等)</li>
+</ul>
+<blockquote>
+<p>术语：可以处理HTTP协议</p>
+</blockquote>
+<h2>3.什么是Servlet</h2>
+<ul>
+<li>是sun推出的用来在服务器端处理HTTP协议的组件</li>
+</ul>
+<h1>三、服务器</h1>
+<h2>1.名称</h2>
+<ul>
+<li>Java服务器</li>
+<li>WEB服务器</li>
+<li>Java WEB服务器</li>
+<li>Servlet容器</li>
+</ul>
+<h2>2.本质</h2>
+<ul>
+<li>是一个软件：能够运行Java项目的软件</li>
+<li>和浏览器相对应、平级</li>
+</ul>
+<h2>3.举例</h2>
+<ul>
+<li>Tomcat</li>
+<li>JBoss</li>
+<li>WebLogic</li>
+<li>WebSphere</li>
+</ul>
+<h1>四、如何使用tomcat</h1>
+<h2>1.单独使用(上线时)</h2>
+<h3>1)配置JAVA_HOME</h3>
+<ul>
+<li>tomcat依赖于Java</li>
+<li>使用个人笔记本的同学需要配置</li>
+<li>使用达内电脑的同学不用，上面已经配置好了</li>
+</ul>
+<h3>2)下载及安装</h3>
+<ul>
+<li>在apache官网下载</li>
+<li>在达内：http://doc.tedu.cn/tomcat/</li>
+<li>直接解压缩(释放)即可，这是绿色免安装软件</li>
+</ul>
+<blockquote>
+<p>达内的学习机上已经下载并安装好了，在/tts9/apache-tomcat7.0.67</p>
+</blockquote>
+<h3>3)启动tomcat</h3>
+<ul>
+<li>Linux：打开/tomcat/bin目录，输入./startup.sh</li>
+<li>window：打开/tomcat/bin目录，双击startup.bat</li>
+</ul>
+<blockquote>
+<p>给目录加权限：chmod +x *sh</p>
+</blockquote>
+<h3>4)访问tomcat</h3>
+<ul>
+<li>打开浏览器，输入http://localhost:8080</li>
+<li>看到一只猫着代表启动成功</li>
+</ul>
+<h3>5)关闭tomcat</h3>
+<ul>
+<li>Linux：打开/tomcat/bin目录，输入./shutdown.sh</li>
+<li>windows：打开/tomcat/bin目录，双击shutdown.bat</li>
+</ul>
+<h2>2.用Eclipse管理tomcat(开发时)</h2>
+<ul>
+<li>1)参考：doc.tedu.cn/tomcat</li>
+<li>2)配置失败需要从来：</li>
+<li>window-&gt;preference-&gt;server-&gt;runtime</li>
+<li>选择tomcat点击remove</li>
+<li>Eclipse左侧点击Servers项目将其删除</li>
+</ul>
+<h1>五、Servlet开发步骤</h1>
+<h2>1.创建WEB项目</h2>
+<ul>
+<li>WEB项目有标准的WEB目录：</li>
+<li>webapp/WEB-INF/web.xml</li>
+</ul>
+<h2>2.导入jar包</h2>
+<h3>1)用maven搜javaee</h3>
+<ul>
+<li>在搜索结果中选择javaee-api.jar</li>
+</ul>
+<h3>2)使用tomcat内置的jar包</h3>
+<ul>
+<li>右键项目-&gt;properties-&gt;targeted runtimes-&gt;勾选tomcat-&gt;apply</li>
+</ul>
+<h2>3.开发Servlet</h2>
+<ul>
+<li>继承于HttpServlet</li>
+<li>间接实现了Servlet接口(sun的规范)</li>
+</ul>
+<h2>4.配置Servlet</h2>
+<ul>
+<li>在web.xml中加以配置</li>
+</ul>
+<h2>5.部署项目</h2>
+<ul>
+<li>在Servers下点击tomcat</li>
+<li>右键点击Add and Remove</li>
+<li>弹出框中将项目从左侧移动到右侧</li>
+<li>启动tomcat</li>
+</ul>
+<blockquote>
+<p>部署：就是拷贝</p>
+</blockquote>
+<h2>6.访问Servlet</h2>
+<ul>
+<li>http://localhost:8080/servlet1/ts</li>
+</ul>
+<p><img src="1.png" /></p>
+<h1>六、代码执行过程及错误</h1>
+<p><img src="2.png" /></p>
+<h1>补充</h1>
+<h2>一、端口占用错误</h2>
+<h3>1.出现问题的情况</h3>
+<ul>
+<li>报错：Address already in user,JVM_BIND:8080</li>
+</ul>
+<h3>2.原因及解决方案</h3>
+<h4>1)tomcat启动了2次，造成端口冲突</h4>
+<ul>
+<li>打开/tomcat/bin目录，执行shutdown命令，强制关闭它</li>
+</ul>
+<h4>2)其他软件占用了此端口(Oracle)</h4>
+<ul>
+<li>修改tomcat的端口</li>
+<li>打开tomcat配置文件server.xml</li>
+<li>在65行修改port=&quot;8080&quot;，建议改为8088、8089等</li>
+<li>注意：关闭tomcat时修改，然后重新启动</li>
+</ul>
+<blockquote>
+<p>在Servers项目下可以找到server.xml配置文件</p>
+</blockquote>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	//onload
+	$(function(){
+		//给按钮绑定单击事件
+		$(":button").click(function(){
+			var n = 0; //循环次数
+			var id = setInterval(function(){
+				//对第n个文本框模拟光标切入事件
+				$(":text").eq(n).trigger("focus");
+				//生成随机分数
+				var score = parseInt(Math.random()*100);
+				//将分数写入文本框
+				$(":text").eq(n).val(score);
+				n++;
+				if(n==$(":text").length) {
+					clearInterval(id);
+				}
+			},2000);
+		});
+	});
+</script>
+</head>
+<body>
+	<p><input type="button" value="打分"/></p>
+	<p>苍老师：<input type="text"/></p>
+	<p>范传奇：<input type="text"/></p>
+	<p>王克晶：<input type="text"/></p>
+	<p>李洪鹤：<input type="text"/></p>
+</body>
+</html>
+
+
+
+
+
+
+
+

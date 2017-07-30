@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var id;
+	function send() {
+		if(id) {
+			//id非空则定时器已启动，不要再次启动
+			return;
+		}
+		//获取p
+		var p = document.getElementById("msg");
+		//显示正在发送
+		p.innerHTML = "正在发送";
+		id = setTimeout(function(){
+			p.innerHTML = "已发送";
+			//此时定时器自动停止，清空id
+			id = null;
+		},3000);
+	}
+	function cancel() {
+		if(id) {
+			//id非空则定时器已启动，可以停止
+			var p = document.getElementById("msg");
+			//显示已撤销
+			p.innerHTML = "已撤销";
+			//停止定时器
+			clearTimeout(id);
+			//清空id
+			id = null;
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="发送"
+		onclick="send();"/>
+	<input type="button" value="撤销"
+		onclick="cancel();"/>
+	<p id="msg"></p>
+</body>
+</html>
+
+
+
+
+
+
+

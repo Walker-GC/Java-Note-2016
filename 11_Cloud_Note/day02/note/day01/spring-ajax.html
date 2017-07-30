@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>spring-ajax</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>Spring-MVC JSON 支持</h1>
+<p>Spring MVC 提供了JSON返回结果支持功能。这个功能需要第三方组件jackson的支持。</p>
+<p>jackson的作用是将Java对象格式化为Json风格的字符串。</p>
+<h2>使用步骤</h2>
+<ol>
+<li>导入 Spring-webmvc 和 jackson 包</li>
+<li>
+配置Spring-webmvc
+<ul>
+<li>在web.xml配置 DispatcherServlet</li>
+<li>
+添加 Spring 配置文件 spring-web.xml
+<ul>
+<li><code>&lt;context:component-scan	base-package=&quot;cn.tedu.web&quot;/&gt;</code></li>
+<li><code>&lt;mvc:annotation-driven/&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+编写控制器
+<ul>
+<li>在控制器方法上使用 @ResponseBody</li>
+<li>控制器方法的返回值就自动封装到 响应Body中返回到浏览器</li>
+</ul>
+</li>
+</ol>
+<p>案例：</p>
+<p>pom.xml (组件坐标)</p>
+<pre><code>    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+        &lt;version&gt;3.2.8.RELEASE&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+        &lt;artifactId&gt;jackson-core&lt;/artifactId&gt;
+        &lt;version&gt;2.2.3&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+        &lt;artifactId&gt;jackson-annotations&lt;/artifactId&gt;
+        &lt;version&gt;2.2.3&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+        &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+        &lt;version&gt;2.2.3&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre>
+
+<p>web.xml Spring 控制器配置：</p>
+<pre><code>&lt;servlet&gt;
+    &lt;servlet-name&gt;mvc&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;
+        org.springframework.web.servlet.DispatcherServlet
+    &lt;/servlet-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;classpath:spring-web.xml&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;mvc&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;  
+</code></pre>
+
+<p>spring-web.xml Spring 配置文件，打开组件扫描</p>
+<pre><code> &lt;context:component-scan 
+    base-package=&quot;cn.tedu.web&quot;/&gt;
+
+ &lt;mvc:annotation-driven/&gt;
+</code></pre>
+
+<p>控制器类：</p>
+<pre><code>package cn.tedu.web; 
+
+@Controller
+@RequestMapping(&quot;/demo&quot;)
+public class JsonController {
+    //@ResponseBody 来自Spring的注解，作用是
+    //将控制器方法的返回结果格式化为JSON字符串
+    //封装到HTTP协议的响应body中发送到客户端
+    @RequestMapping(&quot;/hello.do&quot;)
+    @ResponseBody
+    public Object execute(){
+        return &quot;Hello World&quot;;
+    }
+}
+</code></pre>
+
+<p>测试：</p>
+<pre><code>请求 http://localhost:8080/SpringAjax/demo/hello.do
+的JSON 返回结果。
+</code></pre>
+
+<h3>Spring 支持的返回多种对象作为JSON</h3>
+<p>案例：</p>
+<pre><code>//将Map作为返回结果
+@RequestMapping(&quot;/map.do&quot;)
+@ResponseBody
+public Object map(){
+    Map&lt;String, Object&gt; map = 
+        new HashMap&lt;String, Object&gt;();
+    map.put(&quot;name&quot;, &quot;Tom&quot;);
+    map.put(&quot;age&quot;, 28);
+    map.put(&quot;job&quot;, &quot;抓老鼠&quot;);
+    map.put(&quot;times&quot;, new int[]{1,4,6});
+    return map;
+}
+
+//将List作为返回结果
+@RequestMapping(&quot;list.do&quot;)
+@ResponseBody
+public List&lt;String&gt; list(){
+    ArrayList&lt;String&gt; list =
+        new ArrayList&lt;String&gt;();
+    list.add(&quot;Tom&quot;);
+    list.add(&quot;Jerry&quot;);
+    list.add(&quot;Andy&quot;);
+    return list;
+}
+
+//将对象作为返回结果
+@RequestMapping(&quot;/object.do&quot;)
+@ResponseBody
+public Object object(){
+    return new Person(88, &quot;饭老师&quot;, 18);
+}
+</code></pre>
+
+<p>测试类：</p>
+<pre><code>public class Person {
+    private int id;
+    private String name;
+    private int age;
+    public Person() {
+    }
+
+    public Person(int id, String name, int age) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+}
+</code></pre>
+
+<h3>关于JSON 返回结果</h3>
+<ol>
+<li>List 与 Array 转换为JSON以后没有差别</li>
+<li>Object 与 Map 转换为JSON以后没有差别</li>
+<li>
+如果需要返回多个数据，可以将数据封装到Map或者Object中返回。
+<ul>
+<li>不建议封装到List中返回。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>提示：map作为JSON结果是非常便捷的。</p>
+</blockquote>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

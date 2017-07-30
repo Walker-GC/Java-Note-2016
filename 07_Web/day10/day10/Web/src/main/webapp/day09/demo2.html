@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//1.创建新节点li
+	//2.将它追加到ul的最后
+	function f1() {
+		//创建的新节点无任何内容和属性
+		var li = document.createElement("li");
+		//设置内容、值、属性
+		li.innerHTML = "天津";
+		//将其挂到DOM树下以显示
+		var ul = document.getElementById("city");
+		ul.appendChild(li);
+	}
+	//1.创建新节点li
+	//2.将它插入到ul下广州前
+	function f2() {
+		var li = document.createElement("li");
+		li.innerHTML = "重庆";
+		//插入节点需要2个条件：父亲、弟弟
+		var ul = document.getElementById("city");
+		var gz = document.getElementById("gz");
+		ul.insertBefore(li, gz);
+	}
+	//删除节点
+	function f3() {
+		var ul = document.getElementById("city");
+		var gz = document.getElementById("gz");
+		ul.removeChild(gz);
+	}
+</script>
+</head>
+<body>
+	<p>
+		<input type="button" value="追加"
+			onclick="f1();"/>
+		<input type="button" value="插入"
+			onclick="f2();"/>
+		<input type="button" value="删除"
+			onclick="f3();"/>
+	</p>
+	<ul id="city">
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+	</ul>
+</body>
+</html>
+
+
+
+
+
+

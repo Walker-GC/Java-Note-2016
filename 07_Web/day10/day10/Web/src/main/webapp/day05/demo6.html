@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function pf() {
+		console.log(1);
+		//获取文本框
+		var text = document.getElementById("num");
+		console.log(text);
+		//获取文本框内的值
+		var n = text.value;
+		console.log(n);
+		//获取span
+		var span = document.getElementById("result");
+		console.log(span);
+		if(isNaN(n)) {
+			//不是数字，将提示信息写入span
+			span.innerHTML = "请输入数字";
+		} else {
+			//是数字，计算平方然后写入span
+			span.innerHTML = n*n;
+		}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="num"/>
+	<input type="button" value="平方"
+		onclick="pf();"/>
+	= <span id="result"></span>
+</body>
+</html>
+
+
+
+
+
+
+
+

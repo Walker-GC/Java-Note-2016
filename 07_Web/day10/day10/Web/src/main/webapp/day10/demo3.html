@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		width: 400px;
+		border: 1px solid red;
+		padding: 30px 10px;
+	}
+	p {
+		border: 1px solid red;
+		padding: 20px;
+	}
+</style>
+<script>
+	function f1(e) {
+		alert("button");
+		//取消事件冒泡
+		//{"stopPropagation":function(){}}
+		if(e.stopPropagation) {
+			e.stopPropagation();
+		} else {
+			e.cancelBubble = true;
+		}
+	}
+	//如何获取事件源
+	function f2(e) {
+		var obj = e.srcElement || e.target;
+		console.log(obj);
+	}
+</script>
+</head>
+<body>
+	<div onclick="alert('div');">
+		<p onclick="alert('p');">
+			<input type="button" value="按钮1"
+				onclick="f1(event);"/>
+		</p>
+	</div>
+	<div onclick="f2(event);">
+		<input type="button" value="按钮2"/>
+		<a href="#">TOP</a>
+		<span>Hello</span>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+

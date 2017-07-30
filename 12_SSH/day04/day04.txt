@@ -1,0 +1,103 @@
+#Hibernate
+##概念:
+是一个不需要些SQL的数据库框架.其想法是将java实体对象映射存储到数据库表中,只需要将实体与表的映射关系定义好,Hibernate会自动生成SQL语句.
+
+##使用步骤:
+1-导包:Hibernate-core/mysql-connector-java/Javassist
+2-配置Hibernate主配置文件
+3-配置Hibernate映射文件
+4-添加实体类
+5-调用Hibernate API 自动生成SQL语句
+##案例:
+create table user(id varchar(50),
+		name varchar(30),
+		password varchar(30),
+		nick varchar(30))
+
+insert into user values('001','Jerry','123456','hehe');
+
+#主键类型
+	唯一标识一条记录
+
+为什么采用UUID?
+	数据库生成主键,会产生插入和回写两次操作,导致性能下降;
+	服务器生成主键,会有并发重复,需要去除重复ID的算法;
+
+##自增类型(mysql和sqlserver)
+	语法:
+<generator class="identity"></generator>
+	create table student(
+		id int not null 				auto_increment,
+		name varchar(30),
+		PRIMARY KEY(id));
+	insert into student(name) values(
+	'Tom');
+	insert into student(id,name) 		values(null,'Jack');
+##sequence(DB2和ORACLE)
+语法:
+<generatorclass="sequence">
+<param name="sequence">squ_name</param>
+</generator>
+create sequence seq_user;
+insert into user values(seq_user.nextval,"Tom");
+
+##UUID
+hibernate 会自动调用UUID算法生成ID.
+语法:
+<generatorclass="uuid"></generator>
+
+create table teacher(
+	id varchar(50) not null,
+	name varchar(30),
+	PRIMARY KEY(id));
+insert into teacher values();
+
+#hibernate 对象的生存周期的管理(对象状态)
+被Hibernate管理的实体对象有三种状态:
+1.临时状态
+	刚刚创建的对象,在内存中,数据库中没有数据.调用save()方法后,进入到持久状态
+2.持久状态
+	被保存以后的对象,在该状态下的属性变化,数据库都会随之变化
+3.游离状态
+	Session将对象从缓存中清除变成游离状态,与数据库失去了联系.状态更改不影响数据库.通过调用update方法,可以恢复到持久状态.
+#HQL(Hibernate Query Language)查询语言
+Hibernate提供的一个新的面向对象的查询语言,与sql类似,但与数据库无关.
+-select
+-from 类名
+-where 条件
+-having
+-group by
+-order by
+
+##HQL与SQL不同点:
+1.HQL是面向对象的,按照类名-属性名进行查询
+SQL面向数据库,按照表名-字段名进行查询
+2.HQL不支持select * 
+3.HQL不支持函数处理,可以由分组函数(count*)
+4.HQL不支持join on
+
+##使用步骤
+1.获取Session对象
+2.编写HQL语句
+3.调用Session的createQuery创建查询对象
+4.通过查询对象list等方法返回查询结果
+5.关闭Session
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

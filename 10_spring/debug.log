@@ -1,0 +1,9 @@
+[1107/220338:ERROR:gpu_child_thread.cc(163)] Exiting GPU process due to errors during initialization
+[1107/220338:ERROR:browser_gpu_channel_host_factory.cc(134)] Failed to launch GPU process.
+[1107/220338:ERROR:renderer_main.cc(200)] Running without renderer sandbox
+[1107/220338:ERROR:child_discardable_shared_memory_manager.cc(266)] size: 4194304
+[1107/220412:ERROR:child_discardable_shared_memory_manager.cc(266)] size: 4194304
+[1107/220533:ERROR:child_discardable_shared_memory_manager.cc(266)] size: 4194304
+[1107/220656:ERROR:child_discardable_shared_memory_manager.cc(266)] size: 4194304
+[1107/220750:ERROR:child_discardable_shared_memory_manager.cc(266)] size: 4194304
+[1107/221747:WARNING:raw_channel.cc(210)] Shutting down RawChannel with write buffer nonempty

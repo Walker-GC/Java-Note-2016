@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var cities;
+	//页面加载后
+	window.onload = function() {
+		//查询出所有的城市(模拟)
+		cities = [
+			["石家庄","廊坊","唐山"],
+			["郑州","开封","洛阳"],
+			["济南","青岛","烟台"]
+		];
+	}
+	//根据选中的省份重置城市下拉选
+	//onchange是值改变事件，只有当控件的值
+	//发生变化时才会触发。
+	function chg() {
+		console.log(1);
+		//获取选中的省
+		var sel1 = 
+			document.getElementById("province");
+		//select.value
+		//1.默认返回选中的option的内容
+		//2.当给option设置了value后，
+		//它返回的是选中的option的value值。
+		//value值随便设置(由程序员看情况决定)
+		console.log(sel1.value);
+		console.log(sel1.innerHTML);
+		var index = sel1.value;
+		//通过序号查找对应的一组城市
+		var pcities  = cities[index];
+		//删除城市下拉选内旧的城市
+		var sel2 = 
+			document.getElementById("city");
+		//从对象的角度实现删除
+		//var options = 
+		//	sel2.getElementsByTagName("option");
+		//for(var i=options.length-1;i;i--) {
+		//	sel2.removeChild(options[i]);
+		//}
+		//从内容的角度实现删除
+		sel2.innerHTML = "<option>请选择</option>";
+		//将城市追加到城市下拉选内
+		if(pcities) {
+			for(var i=0;i<pcities.length;i++) {
+				var option = 
+					document.createElement("option");
+				option.innerHTML = pcities[i];
+				sel2.appendChild(option);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	省份:
+	<select id="province" onchange="chg();">
+		<option value="-1">请选择</option>
+		<option value="0">河北省</option>
+		<option value="1">河南省</option>
+		<option value="2">山东省</option>
+	</select>
+	城市:
+	<select id="city">
+		<option>请选择</option>
+	</select>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

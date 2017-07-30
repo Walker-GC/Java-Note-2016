@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!-- 对应实体类 -->
+	<class name="cn.tedu.entity.User" table="user">
+	 <!-- 主键映射(<id></id> name对应实体类中的id，column对应表中的id -->
+	 <id name="id" column="id" type="int"></id>
+	 <!-- 非主键配置<property></property> type小写-->
+	 <property name="name" column="name" type="string"></property>
+	</class>
+</hibernate-mapping>

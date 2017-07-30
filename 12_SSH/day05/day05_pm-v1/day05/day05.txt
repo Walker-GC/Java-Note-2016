@@ -1,0 +1,87 @@
+关联关系
+在数据库中表与表有关联关系
+反映到实体类上就体现了引用关系
+
+案例：
+一个人在同一时间可以对应多本书
+class User{
+	int id；
+	String name；
+	Set<Book> books=
+	new HashSet<Book>();
+}<one-to-many>
+
+class Book{
+	int id;
+	String name;
+	String userid;
+}<many-to-one>
+
+create table t_user(u_id int 
+NOT NULL AUTO_INCREMENT,
+u_name varchar(30),
+PRIMARY KEY(u_id));
+
+insert into t_user(u_name) values('Jack')；
+insert into t_user(u_name) values('Tom')；
+insert into t_user(u_name) values('Andy')；
+insert into t_user(u_name) values('John')；
+
+create table t_book(b_id int
+NOT NULL AUTO_INCREMENT,
+b_name varchar(60),
+b_userid int,
+PRIMARY KEY(b_id));
+
+insert into t_book(b_name,b_userid)
+values('aaa',1);
+insert into t_book(b_name,b_userid)
+values('bbb',1);
+insert into t_book(b_name,b_userid)
+values('ccc',1);
+
+lazy 延迟加载或懒惰加载
+尽可能晚的情况加加载数据库数据到内存
+按需原则
+
+OpenSessionInViewFilter
+
+
+Hibernate
+ORM 框架：Object Relation Mapping
+是对象到关系型数据库的映射，作用是对象映射存储数据库中的行。
+
+
+Hibernate和Mybatis的特点
+Hibernate：面向对象，管理实体对象和数据库的映射，以对象的方式访问数据库，相对复杂
+Mybatis：面向数据库的，不管理实体对象与数据库的映射，从数据库的角度考虑问题，相对简单
+
+sping+Hibernate的整合
+对象的生成方式：
+NEW
+工厂方法
+注入
+
+IOC
+
+整合spring目的：
+将Hibernate的对象交给spring容器，
+由sring进行管理。原理：将session和sessionFactory交给了spring。
+
+为什么要使用连接池？
+低并发：重用连接，提高连接效率
+高并发：避免连接过载，保护数据库
+
+
+环境搭建：
+1-新建项目
+2-导包
+3-配置spring-context.xml
+4-编写dao接口
+5-实现Dao
+6-测试
+
+
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/*自定义动画基于定时器和定位
+		(相对、绝对、固定)，即通过定时器
+		不断修改元素的偏移量使其移动。 */
+	img {
+		position: relative;
+	}
+	#gg {
+		width: 200px;
+		height: 100px;
+		border: 1px solid red;
+		position: fixed;
+		top: 100px;
+		right: -180px;
+	}
+</style>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	function f1() {
+		$("img").show(3000);
+	}
+	function f2() {
+		//回调函数：在某事完成后自动调用的函数。
+		$("img").hide(3000,function(){
+			console.log(2);
+		});
+		//动画的底层实现原理：
+		//启动了一个定时器，每隔一段时间
+		//就修改一下元素的样式，直到3000
+		//毫秒后修改完成时停止定时器。
+		//定时器相当于支线程，f2相当于主线程，
+		//二者并发执行，所以先输出了1。
+		console.log(1);
+	}
+	function f3() {
+		$("#msg").fadeIn(500).fadeOut(3000);
+	}
+	function f4() {
+		//相对定位永远以自己原始位置为基准
+		$("img").animate({"left":"400px"},3000)
+				.animate({"top":"400px"},3000)
+				.animate({"left":"0"},3000)
+				.animate({"top":"0"},3000);
+	}
+	$(function(){
+		//给div绑定hover事件
+		$("#gg").hover(
+			function(){
+				$(this).animate({"right":"0"},500);
+			},
+			function(){
+				$(this).animate({"right":"-180px"},500);
+			}
+		);
+	});
+</script>
+</head>
+<body>
+	<p>
+		<input type="button" value="显示"
+			onclick="f1();"/>
+		<input type="button" value="隐藏"
+			onclick="f2();"/>
+		<input type="button" value="删除"
+			onclick="f3();"/>
+		<input type="button" value="走你"
+			onclick="f4();"/>
+	</p>
+	<p><img src="../images/01.jpg"/></p>
+	<p id="msg" style="display:none;">操作成功</p>
+	<div id="gg"></div>
+</body>
+</html>
+
+
+
+
+
+
+

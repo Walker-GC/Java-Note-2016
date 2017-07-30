@@ -1,0 +1,153 @@
+#servlet和filter的异同
+##概念：
+Servlet是运行在服务器端的程序，可以动态的生成WEB页面
+
+filter是一段可以复用的代码，不能产生请求和响应，但可以对其进行处理
+
+##生命周期：
+servlet：在服务器启动或被请求时，通过init()实现初始化
+从第一次请求或以后多次请求，会调用doGet()或doPost()方法
+停止服务器时，会调用destroy()方法进行销毁
+
+filter：服务器启动时，加载过滤器的实例。
+每一次请求都调用doFilter()方法
+停止服务器时，会调用destroy()方法进行销毁
+
+##案例步骤：
+1、创建web project
+2、创建servlet，输出jsp
+3、配置web.xml文件
+
+
+###回顾：
+load-on-startup
+作用：配置是否在容器启动的同时，初始化servlet实例
+
+当值等于或小于0的时候，在被请求时初始化
+
+当值大于0的整数时，代表启动容器就初始化。数值越小优先级越高。
+
+
+#面试题：
+##为什么进行编码：
+
+一个字符在内存中16位，网络传输的基本单位是8位，这时候我们需要对字符进行拆分再传输，拆分的过程我们叫做编码。
+
+##描述一下UTF-8和GBK的特点
+UTF-8：国际化最优编码方案，中文占3字节，可表示字符10W+
+GBK：本地最优的编码方案，中文占2字节，可表示字符2W+
+
+
+#Struts2+spring
+##环境搭建
+##案例步骤
+1、创建项目并导包（Struts2-core：2.3.8  Struts2-spring-plugin：2.3.8）
+2、配置web.xml(listener和filter)
+3、配置spring-context.xml
+4、配置struts.xml
+5、实现Action类
+
+#注解回顾：
+@Component 是所有被spring管理的组件标注的通用形式，可放在类上。
+
+@Controller 对应的表现层的Bean，也就是Action
+
+@Service 对应的是业务的,Bean.类上。
+
+@Repository 对应数据层的Bean
+
+@Resource 通知spring要使用某类的实例
+
+
+#Result 常用类型
+是什么？用作输出的组件。预定义了十种类型，每种类型都是一个类，这些类都实现了result接口
+
+1、dispatcher  转发
+2、redirectAction重定向到其他Action
+语法：
+<result type="redirectAction">				hello
+</result>
+或
+<result type="redirectAction">
+<param name="namespace">			/result
+</param>
+<param name="actionName">			hello
+</param>
+</result>
+
+3、redirect 重定位URL
+语法：
+
+4、stream  主要用于图片的显示
+属性说明：
+-contentType：定义了处理媒体类型：iamge/png
+-inputName：必须是一个inputStream类型的流，用于获取放送到客户端的字节数据。如果是图片，就是编码以后的字节流。
+-contentDisposition 可选参数，用于强制下载保存。
+-bufferSize 可选参数
+
+5、json 用于处理ajax请求
+Struts2-json-plugin
+
+两种使用方式：
+-将Action的全部属性发送到客户端
+语法：
+<result name="success"type="json">
+<result>
+
+-将Action的某一个属性值发送到客户端（最长用）
+语法：
+<result name="success"type="json">
+	<param name="root">
+		value
+	</param>
+<result>
+value:是Action中某一个属性的名
+
+
+
+
+
+
+
+
+
+
+
+
+案例步骤：
+1、创建action 接收浏览器发送的数据返回给result
+2、配置Struts.xml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

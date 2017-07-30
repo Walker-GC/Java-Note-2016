@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	window.onload = function() {
+		//1.基本选择器
+		//和CSS选择器一样
+		//2.层次选择器
+		//2.1选择儿子、孙子，和CSS一样
+		//2.2选择弟弟
+		console.log($("#gz+li"));
+		//3.过滤选择器(*)
+		//3.1基本过滤选择器(*)
+		console.log($("li:first"));
+		console.log($("li:odd"));
+		console.log($("li:lt(2)"));
+		console.log($("li:not(#gz)"));
+		//3.2内容过滤选择器
+		console.log($("li:contains('京')"));
+		//3.3可见性过滤选择器
+		console.log($("li:hidden"));
+		//3.4属性过滤选择器
+		console.log($("li[id!='gz']"));
+		//3.5状态过滤选择器
+		console.log($("input:disabled"));
+		console.log($("input:checked"));
+		//4.表单选择器
+		console.log($(":radio"));
+	}
+</script>
+</head>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>南京</li>
+		<li style="display:none;">苏州</li>
+	</ul>
+	<!-- 
+		readonly:只读，数据依然可以提交给服务器。
+		disabled:禁用，数据无法提交给服务器。
+	 -->
+	<p>
+		账号:<input type="text" disabled/>
+	</p>
+	<p>
+		密码:<input type="password"/>
+	</p>
+	<p>
+		<input type="radio" name="sex" checked/>男
+		<input type="radio" name="sex"/>女
+	</p>
+</body>
+</html>
+
+<!-- ****************我是华丽的分隔线**************** -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.big {font-size:30px;}
+	.important {color:red;}
+</style>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	window.onload = function() {
+		//1.读写内容
+		//1.1 html() == innerHTML
+		console.log($("p:first").html());
+		$("p:first").html("jQuery支持<u>DOM操作</u>");
+		//1.2 text() == innerText
+		//不支持子标签，语法同1.1
+		//1.3 val() == value
+		console.log($(":button:first").val());
+		$(":button:first").val("BBB");
+		//1.4 attr() == setAttribute()+getAttribute()
+		console.log($("img:first").attr("src"));
+		$("img:first").attr("src","../images/02.jpg");
+		
+		//2.增删节点
+		//2.1创建节点
+		var $li1 = $("<li>天津</li>");
+		var $li2 = $("<li>南京</li>");
+		console.log($li1);
+		//2.2增加节点
+		$("ul").append($li1);
+		$("#gz").before($li2);
+		//2.3删除节点
+		//$("#gz").remove();
+		
+		//3.获取某节点的亲戚(父亲、孩子、兄弟)
+		//有时候我们不是自己写选择器选择节点，
+		//而是调用了别人的方法获得了某个节点，
+		//然后我对这个节点做了某些操作，又希望
+		//继续对它的亲戚做进一步操作，此时没办法
+		//直接写选择器，就需要调用这些方法了。
+		var $gz = $("#gz");
+		console.log($gz.parent());
+		console.log($gz.prev());
+		console.log($gz.siblings());
+		var $ul = $("ul");
+		console.log($ul.find("li:contains('京')"));
+		
+		//4.样式操作
+		//4.1访问元素的style属性
+		//css()参考昨天写的字体变大的案例
+		//4.2访问元素的class属性(*)
+		//1)addClass("")
+		//给指定元素的class属性内加一个值
+		$("p:first").addClass("big").addClass("important");
+		//2)removeClass("")
+		//从指定元素的class属性内删除一个值
+		$("p:first").removeClass("big").removeClass("important");
+		//3)removeClass()
+		//删除指定元素的class属性内的所有值
+		//4)hasClass("")
+		//判断指定元素的class属性内是否包含某值
+		console.log($("p:first").hasClass("big"));
+		
+	}
+	
+	function bigger() {
+		//5)toggleClass("")
+		//判断指定的元素的class属性上，
+		//是否有某值。若有则删除它，
+		//若没有就加上它。
+		$("p:first").toggleClass("big");
+	}
+	
+</script>
+</head>
+<body>
+	<p>jQuery支持<b>DOM操作</b></p>
+	<p><input type="button" value="AAA"/></p>
+	<p><img src="../images/01.jpg"/></p>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+	</ul>
+	<p>
+		<input type="button" value="大大大"
+			onclick="bigger();"/>
+	</p>
+</body>
+</html>
+
+<!-- ****************我是华丽的分隔线**************** -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	//类似于
+	//window.onload = function(){}
+	//window.onload如果在页面上执行多次，
+	//则后者覆盖前者，即只有最后一次有效。
+	//$(function(){})如果在页面上执行多次，
+	//则它内部的代码会叠加，即都有效。
+	$(function(){
+		//给按钮1绑定单击事件
+		$(":button:first").click(function(e){
+			console.log("按钮1");
+			//因为事件对象由浏览器创建，
+			//而不同浏览器创建的event不同，
+			//导致开发时需要判断浏览器。
+			//为了避免这个麻烦，jQuery
+			//对event做了封装，将其API统一了。
+			//获取事件源: e.target
+			//取消事件冒泡：e.stopPropagation()
+			console.log(e);
+		});
+		//给图片绑定hover事件。
+		//css里有hover伪类选择器，
+		//js里没有hover，jQuery中有hover事件。
+		//hover事件相当于onmouseover+onmouseout
+		$("img").hover(
+			function(){
+				//特定的API，实际上是修改内联样式
+				$(this).width("250px").height("250px");
+				//$(this).css("width","250px");
+				//$(this).addClass("big");
+				//$(this).toggleClass("big");
+			},//悬停时
+			function(){
+				$(this).width("218px").height("218px");
+				//$(this).css("width","218px");
+				//$(this).removeClass("big");
+				//$(this).toggleClass("big");
+			} //离开时
+		);
+		//给按钮2绑定单击事件
+		$(":button:eq(1)").click(function(){
+			//让图片在显示和隐藏间切换
+			$("img").toggle();
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<input type="button" value="按钮1"/>
+	</p>
+	<p>
+		<input type="button" value="按钮2"/>
+	</p>
+	<p>
+		<img src="../images/01.jpg"/>
+	</p>
+</body>
+</html>
+
+<!-- ****************我是华丽的分隔线**************** -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-1.11.1.js"></script>
+<script>
+	//onload
+	$(function(){
+		//给按钮绑定单击事件
+		$(":button").click(function(){
+			var n = 0; //循环次数
+			var id = setInterval(function(){
+				//对第n个文本框模拟光标切入事件
+				$(":text").eq(n).trigger("focus");
+				//生成随机分数
+				var score = parseInt(Math.random()*100);
+				//将分数写入文本框
+				$(":text").eq(n).val(score);
+				n++;
+				if(n==$(":text").length) {
+					clearInterval(id);
+				}
+			},2000);
+		});
+	});
+</script>
+</head>
+<body>
+	<p><input type="button" value="打分"/></p>
+	<p>苍老师：<input type="text"/></p>
+	<p>范传奇：<input type="text"/></p>
+	<p>王克晶：<input type="text"/></p>
+	<p>李洪鹤：<input type="text"/></p>
+</body>
+</html>
+
+<!-- ****************THE END**************** -->
+
+
+
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		width: 218px;
+		height: 218px;
+		border: 1px solid red;
+	}
+	/*让元素以行内块的形式来显示*/
+	.show {
+		display: inline-block;
+	}
+	/*隐藏元素*/
+	.hide {
+		display: none;
+	}
+</style>
+<script>
+	var id;
+	var count = 0;
+	
+	//页面加载后
+	window.onload = function() {
+		start();
+	}
+	//开始轮播
+	function start() {
+		//启动定时器，每2S换一张图片
+		id = setInterval(function(){
+			//累加轮播次数
+			count++;
+			//获取所有的图片
+			var imgs = 
+				document.getElementsByTagName("img");
+			//遍历数组
+			for(var i=0;i<imgs.length;i++) {
+				//将每个图片隐藏
+				imgs[i].className = "hide";
+			}
+			//找出本次轮播要显示的图片
+			var n = count%imgs.length;
+			//将这个图片显示
+			imgs[n].className = "show";
+		},2000);		
+	}
+	//停止轮播
+	function stop() {
+		clearInterval(id);
+	}
+</script>
+</head>
+<body>
+	<!-- 
+		hover是CSS中的伪类选择器。
+		onmouseover是鼠标悬停事件。
+		onmouseout是鼠标离开事件。
+	 -->
+	<div onmouseover="stop();"
+		onmouseout="start();">
+		<img src="../images/01.jpg"/>
+		<img src="../images/02.jpg" class="hide"/>
+		<img src="../images/03.jpg" class="hide"/>
+		<img src="../images/04.jpg" class="hide"/>
+		<img src="../images/05.jpg" class="hide"/>
+		<img src="../images/06.jpg" class="hide"/>
+	</div>
+</body>
+</html>
+
+
+
+
+

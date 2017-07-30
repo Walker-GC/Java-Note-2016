@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//页面加载事件，在浏览器加载完页面后，
+	//自动触发，触发时调用对应的函数。
+	window.onload = function() {
+		//1.读写节点
+		//1.1读取节点的名称和类型
+		var p1 = document.getElementById("p1");
+		console.log(p1.nodeName);
+		console.log(p1.nodeType);
+		//1.2读写节点的内容(<a>内容</a>)
+		//只要是双标签就有内容
+		//1.2.1innerHTML(带子标签)
+		console.log(p1.innerHTML);
+		p1.innerHTML = "1.<u>读写</u>节点";
+		//1.2.2innerText(不带子标签)
+		var p2 = document.getElementById("p2");
+		console.log(p2.innerText);
+		p2.innerText = "2.<u>查询</u>节点";
+		//1.3读写节点的值
+		//只有表单控件有值(input/select/textarea)
+		var btn = document.getElementById("btn1");
+		console.log(btn.value);
+		btn.value = "BUTTON";
+		//1.4读写节点的属性
+		//1.4.1通过方法读写
+		//它们都是标准API，任何浏览器都支持
+		//读：getAttribute("class")
+		//写：setAttribute("class","ok")
+		//删：removeAttribute("class")
+		var img = document.getElementById("img1");
+		console.log(img.getAttribute("src"));
+		img.setAttribute("src","../images/02.jpg");
+		img.removeAttribute("src");
+		//1.4.2通过属性名读写
+		//1)使用标准的属性名(w3c规定的)
+		//className,style,id
+		var p6 = document.getElementById("p6");
+		console.log(p6.style);
+		p6.style.fontSize = "30px";
+		//2)使用不标准的属性名(简单了解即可)
+		//其他的属性几乎都是非标准的，
+		//如src,href,name等等
+	}
+</script>
+</head>
+<body>
+	<p id="p1">1.<b>读写</b>节点</p>
+	<p id="p2">2.<b>查询</b>节点</p>
+	<p id="p3">3.<b>增删</b>节点</p>
+	<p><input type="button" value="按钮" id="btn1"/></p>
+	<p><img src="../images/01.jpg" id="img1"/></p>
+	<p id="p6" style="color:red;">最常用的是className属性</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

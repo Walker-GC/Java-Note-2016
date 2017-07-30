@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"
+src="js/prototype-1.6.0.3.js">
+</script>
+<script type="text/javascript">
+	//使用json语法表示一个对象
+	function f1(){
+		var obj = {"code":"600015","price":10};
+		alert(obj.code);
+	}
+	
+	function f2(){
+		var obj = {"name":"达内","addr":{
+			"city":"北京",
+			"street":"长安街8号",
+			"room":1234
+			}
+		};
+		alert(obj.addr.street);
+	}
+	
+	//表示由对象组成的数组
+	function f3(){
+		var arr = [{"code":"600015","price":10},
+		           {"code":"300010","price":20}];
+		alert(arr[1].price);
+	}
+	
+	//如何将json字符串转换成javascript对象
+	function f4(){
+		var str = '{"code":"600015","price":10}';
+		//使用prototype提供的函数来转换
+		var obj = str.evalJSON();
+		alert(obj.code);
+	}
+	
+	function f5(){
+		var str = '[{"code":"600015","price":10},'
+         + '{"code":"300010","price":20}]';
+		var arr = str.evalJSON();
+		alert(arr[1].price);
+	}
+</script>
+</head>
+<body style="font-size:30px;">
+	<a href="javascript:f5();">ClickMe</a>
+</body>
+</html>
+
+
+
+
